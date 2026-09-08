@@ -1,11 +1,12 @@
 import { skills } from '../../data/content';
 import { COLORS } from '../../constants/colors';
+import { FONTS } from '../../constants/fonts';
 
 function SkillTag({ label }: { label: string }) {
   return (
     <span
-      className="font-mono text-micro"
       style={{
+        ...FONTS.presets.tag,
         display: 'inline-block',
         padding: '6px 12px',
         background: COLORS.surfaceRaised,
@@ -30,9 +31,8 @@ export function Expertise() {
       {/* Left-aligned section heading */}
       <h2
         id="expertise-heading"
-        className="font-display text-2xl-port"
         style={{
-          fontWeight: 700,
+          ...FONTS.presets.sectionHeading,
           color: COLORS.textPrimary,
           margin: '0 0 32px',
           textAlign: 'left',
@@ -51,11 +51,11 @@ export function Expertise() {
         {/* Web Development column */}
         <div style={{ flex: 1, paddingRight: 28 }}>
           <h3
-            className="font-body text-sm-port"
             style={{
+              ...FONTS.presets.bodySm,
               color: COLORS.textMuted,
               margin: '0 0 16px',
-              fontWeight: 500,
+              fontWeight: FONTS.weight.medium,
               textAlign: 'center',
             }}
           >
@@ -90,11 +90,11 @@ export function Expertise() {
         {/* AI / ML column */}
         <div style={{ flex: 1, paddingLeft: 28 }}>
           <h3
-            className="font-body text-sm-port"
             style={{
+              ...FONTS.presets.bodySm,
               color: COLORS.textMuted,
               margin: '0 0 16px',
-              fontWeight: 500,
+              fontWeight: FONTS.weight.medium,
               textAlign: 'center',
             }}
           >

@@ -1,15 +1,17 @@
+import { LINKS } from '../constants/links';
+
 // ─────────────────────────────────────────────────────────────────────────────
 // CONTENT — edit this file to populate your portfolio with your real details.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const personal = {
-  name: "Ibrahim Al-Rashid",
+  name: "Muhammad Ibrahim Umar",
   role: "Web Developer & AI-ML Engineer",
   tagline: "Building intelligent interfaces, one commit at a time.",
-  email: "ibrahim@example.com",
-  github: "https://github.com/ibrahim",
-  linkedin: "https://linkedin.com/in/ibrahim",
-  resume: "/resume.pdf",
+  email: LINKS.email,
+  github: LINKS.github,
+  linkedin: LINKS.linkedin,
+  resume: LINKS.resume,
 };
 
 export const about = [
@@ -55,8 +57,8 @@ export const projects = [
     description:
       "A full-stack semantic search tool that embeds documents with sentence-transformers and retrieves them via FAISS. Features a React query interface with real-time result streaming.",
     tech: ["Python", "FastAPI", "React", "FAISS", "sentence-transformers", "Docker"],
-    github: "https://github.com/ibrahim/contexto",
-    live: "https://contexto.example.com",
+    github: LINKS.projects.contexto.github,
+    live: LINKS.projects.contexto.live,
   },
   {
     id: "proj-2",
@@ -64,8 +66,8 @@ export const projects = [
     description:
       "An accessible, design-token-driven React component library with full TypeScript types, Storybook documentation, and automated visual-regression tests via Chromatic.",
     tech: ["React", "TypeScript", "Storybook", "Tailwind CSS", "Chromatic"],
-    github: "https://github.com/ibrahim/synapse-ui",
-    live: "https://synapse-ui.example.com",
+    github: LINKS.projects.synapseUi.github,
+    live: LINKS.projects.synapseUi.live,
   },
   {
     id: "proj-3",
@@ -73,8 +75,8 @@ export const projects = [
     description:
       "A configurable evaluation framework for benchmarking large language models on custom task suites. Supports parallel inference, metric aggregation, and a web-based results dashboard.",
     tech: ["Python", "PyTorch", "FastAPI", "SQLite", "React", "Vite"],
-    github: "https://github.com/ibrahim/llm-eval",
-    live: null,
+    github: LINKS.projects.llmEval.github,
+    live: LINKS.projects.llmEval.live,
   },
   {
     id: "proj-4",
@@ -82,8 +84,8 @@ export const projects = [
     description:
       "A Progressive Web App for offline trail navigation. Uses IndexedDB for tile caching, the Geolocation API for live tracking, and a custom React map renderer built on top of Leaflet.",
     tech: ["React", "TypeScript", "Leaflet", "IndexedDB", "PWA", "Node.js"],
-    github: "https://github.com/ibrahim/trailmapper",
-    live: "https://trailmapper.example.com",
+    github: LINKS.projects.trailMapper.github,
+    live: LINKS.projects.trailMapper.live,
   },
 ];
 

@@ -6,7 +6,7 @@ import { RightColumn } from './components/RightColumn';
 import { COLORS } from './constants/colors';
 import './index.css';
 
-const SECTION_IDS = ['about', 'expertise', 'projects', 'history', 'contact'];
+const SECTION_IDS = ['about', 'expertise', 'projects', 'career-history', 'contact'];
 
 function App() {
   const [theme, toggleTheme] = useTheme();

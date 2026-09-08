@@ -1,5 +1,6 @@
 import { about } from '../../data/content';
 import { COLORS } from '../../constants/colors';
+import { FONTS } from '../../constants/fonts';
 
 export function About() {
   return (
@@ -10,9 +11,8 @@ export function About() {
     >
       <h2
         id="about-heading"
-        className="font-display text-2xl-port"
         style={{
-          fontWeight: 700,
+          ...FONTS.presets.sectionHeading,
           color: COLORS.textPrimary,
           margin: '0 0 28px',
         }}
@@ -23,8 +23,11 @@ export function About() {
         {about.map((para, i) => (
           <p
             key={i}
-            className="font-body text-base-port"
-            style={{ color: COLORS.textSecondary, margin: 0 }}
+            style={{
+              ...FONTS.presets.body,
+              color: COLORS.textSecondary,
+              margin: 0,
+            }}
           >
             {para}
           </p>

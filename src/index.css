@@ -3,37 +3,10 @@
 /* ── Google Fonts ─────────────────────────────────────────────────────────── */
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap");
 
-/* ── Color tokens — Light mode (default) ──────────────────────────────────── */
-:root {
-  --color-canvas:           #C1C9CA;
-  --color-surface:          #E7EAEA;
-  --color-surface-raised:   #F4F5F5;
-  --color-border:           #A9B3B4;
-  --color-border-subtle:    #B7BFC0;
-  --color-text-primary:     #12151C;
-  --color-text-secondary:   #454C53;
-  --color-text-muted:       #6D757B;
-  --color-accent:           #CC310E;
-  --color-accent-hover:     #A6280B;
-  --color-accent-text:      #A6280B; /* AA-safe for small text on light bg */
-  --color-accent-subtle-bg: #F3D9D2;
-}
+/* ── Color tokens ─────────────────────────────────────────────────────────── */
+/* All theme color definitions are controlled in src/constants/colors.ts.
+   They are dynamically injected onto document.documentElement on load and on theme toggle. */
 
-/* ── Color tokens — Dark mode ─────────────────────────────────────────────── */
-[data-theme="dark"] {
-  --color-canvas:           #12151C;
-  --color-surface:          #1B1F29;
-  --color-surface-raised:   #242A38;
-  --color-border:           #2C3240;
-  --color-border-subtle:    #232833;
-  --color-text-primary:     #C1C9CA;
-  --color-text-secondary:   #8B93A0;
-  --color-text-muted:       #5B6270;
-  --color-accent:           #CC310E;
-  --color-accent-hover:     #A6280B;
-  --color-accent-text:      #FF7A52; /* AA-safe for small text on dark bg */
-  --color-accent-subtle-bg: #3A1B14;
-}
 
 /* ── Base styles ──────────────────────────────────────────────────────────── */
 *, *::before, *::after {

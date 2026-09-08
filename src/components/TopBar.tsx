@@ -1,11 +1,12 @@
 import { Sun, Moon } from 'lucide-react';
 import { COLORS } from '../constants/colors';
+import { FONTS } from '../constants/fonts';
 
 const HEADER_NAV = [
-  { id: 'expertise', label: 'Expertise' },
-  { id: 'history',   label: 'History' },
-  { id: 'projects',  label: 'Projects' },
-  { id: 'contact',   label: 'Contact' },
+  { id: 'expertise',      label: 'Expertise' },
+  { id: 'career-history', label: 'Career History' },
+  { id: 'projects',       label: 'Projects' },
+  { id: 'contact',        label: 'Contact' },
 ];
 
 function scrollTo(id: string) {
@@ -62,7 +63,7 @@ export function TopBar({ theme, onToggle }: TopBarProps) {
             padding: 0,
             display: 'flex',
             alignItems: 'center',
-            gap: 32,
+            gap: 28,
           }}
         >
           {HEADER_NAV.map(({ id, label }) => (
@@ -73,9 +74,9 @@ export function TopBar({ theme, onToggle }: TopBarProps) {
                   background: 'transparent',
                   border: 'none',
                   cursor: 'pointer',
-                  fontFamily: "'Space Grotesk', sans-serif",
-                  fontSize: 14,
-                  fontWeight: 500,
+                  fontFamily: FONTS.family.display,
+                  fontSize: FONTS.size.sm,
+                  fontWeight: FONTS.weight.medium,
                   color: COLORS.textSecondary,
                   letterSpacing: '0.04em',
                   padding: 0,

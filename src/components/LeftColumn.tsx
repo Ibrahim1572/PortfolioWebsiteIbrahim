@@ -1,15 +1,18 @@
+import { useState } from 'react';
+import { ExternalLink } from 'lucide-react';
 import { RiGithubFill } from 'react-icons/ri';
 import { RiLinkedinBoxFill } from 'react-icons/ri';
 import { personal } from '../data/content';
 import { COLORS } from '../constants/colors';
 import { LINKS } from '../constants/links';
+import { FONTS } from '../constants/fonts';
 
 const NAV_ITEMS = [
-  { id: 'about',     label: 'About' },
-  { id: 'expertise', label: 'Expertise' },
-  { id: 'projects',  label: 'Projects' },
-  { id: 'history',   label: 'History' },
-  { id: 'contact',   label: 'Contact' },
+  { id: 'about',          label: 'About' },
+  { id: 'expertise',      label: 'Expertise' },
+  { id: 'projects',       label: 'Projects' },
+  { id: 'career-history', label: 'Career History' },
+  { id: 'contact',        label: 'Contact' },
 ];
 
 interface LeftColumnProps {
@@ -21,25 +24,28 @@ function scrollTo(id: string) {
   if (el) el.scrollIntoView({ behavior: 'smooth' });
 }
 
-// Simple SVG avatar placeholder
+// SVG avatar placeholder (100x100)
 function AvatarPlaceholder() {
   return (
     <svg
-      viewBox="0 0 140 140"
-      width="140"
-      height="140"
+      viewBox="0 0 100 100"
+      width="100"
+      height="100"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
       style={{ display: 'block' }}
     >
-      <circle cx="70" cy="70" r="70" fill={COLORS.surface} />
-      <circle cx="70" cy="56" r="26" fill={COLORS.border} />
-      <ellipse cx="70" cy="120" rx="40" ry="30" fill={COLORS.border} />
+      <circle cx="50" cy="50" r="50" fill={COLORS.surface} />
+      <circle cx="50" cy="40" r="20" fill={COLORS.border} />
+      <ellipse cx="50" cy="88" rx="30" ry="22" fill={COLORS.border} />
     </svg>
   );
 }
 
 export function LeftColumn({ activeSection }: LeftColumnProps) {
+  const [imgError, setImgError] = useState(false);
+  const showCustomImage = Boolean(LINKS.profileImage && !imgError);
+
   return (
     <aside
       aria-label="Identity and navigation"
@@ -50,87 +56,182 @@ export function LeftColumn({ activeSection }: LeftColumnProps) {
         width: 'min(38%, 420px)',
         height: 'calc(100vh - 60px)',
         backgroundColor: COLORS.canvas,
+        borderRight: `2px solid ${COLORS.borderSubtle}`,
         display: 'flex',
         flexDirection: 'column',
-        padding: '40px 40px',
+        padding: '36px 36px',
         overflow: 'hidden',
         zIndex: 40,
       }}
     >
-      {/* Photo + Social icons row */}
+      {/* Profile photo with 2px accent ring */}
       <div
         className="anim-photo"
         style={{
+          width: 106,
+          height: 106,
+          borderRadius: '50%',
+          padding: 3,
+          boxShadow: `0 0 0 2px ${COLORS.accent}`,
+          marginBottom: 18,
+          flexShrink: 0,
+          overflow: 'hidden',
           display: 'flex',
           alignItems: 'center',
-          gap: 18,
-          marginBottom: 24,
-          flexShrink: 0,
+          justifyContent: 'center',
         }}
       >
-        {/* Circular photo with accent ring */}
         <div
           style={{
-            width: 154,
-            height: 154,
             borderRadius: '50%',
-            padding: 3,
-            boxShadow: `0 0 0 2px ${COLORS.accent}`,
-            flexShrink: 0,
+            overflow: 'hidden',
+            width: 100,
+            height: 100,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: COLORS.surface,
           }}
         >
-          <div style={{ borderRadius: '50%', overflow: 'hidden', width: 148, height: 148 }}>
-            <AvatarPlaceholder />
-          </div>
-        </div>
-
-        {/* Social icon links — no border, no box */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-          {[
-            { href: LINKS.github,   Icon: RiGithubFill,      label: 'GitHub' },
-            { href: LINKS.linkedin, Icon: RiLinkedinBoxFill, label: 'LinkedIn' },
-          ].map(({ href, Icon, label }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={label}
+          {showCustomImage ? (
+            <img
+              src={LINKS.profileImage}
+              alt={personal.name}
+              onError={() => setImgError(true)}
               style={{
-                display: 'flex',
-                alignItems: 'center',
-                color: COLORS.textSecondary,
-                textDecoration: 'none',
-                transition: 'color 150ms ease-out',
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                display: 'block',
               }}
-              onMouseEnter={e => (e.currentTarget.style.color = COLORS.accent)}
-              onMouseLeave={e => (e.currentTarget.style.color = COLORS.textSecondary)}
-            >
-              <Icon size={26} />
-            </a>
-          ))}
+            />
+          ) : (
+            <AvatarPlaceholder />
+          )}
         </div>
       </div>
 
-      {/* Name + Role (no tagline) */}
-      <div className="anim-name" style={{ marginBottom: 36, flexShrink: 0 }}>
+      {/* Name: placed below the profile picture */}
+      <div className="anim-name" style={{ marginBottom: 6, flexShrink: 0 }}>
         <h1
-          className="font-display text-display"
-          style={{ color: COLORS.textPrimary, fontWeight: 700, margin: '0 0 8px' }}
+          style={{
+            ...FONTS.presets.nameHeading,
+            color: COLORS.textPrimary,
+            margin: 0,
+            lineHeight: 1.15,
+          }}
         >
-          {personal.name}
+          <span style={{ display: 'block', whiteSpace: 'nowrap' }}>
+            Muhammad Ibrahim
+          </span>
+          <span style={{ display: 'block' }}>
+            Umar
+          </span>
         </h1>
+      </div>
+
+      {/* Role / Title */}
+      <div style={{ marginBottom: 14, flexShrink: 0 }}>
         <p
-          className="font-display text-lg-port"
-          style={{ color: COLORS.textSecondary, fontWeight: 500, margin: 0 }}
+          style={{
+            ...FONTS.presets.roleTitle,
+            color: COLORS.textSecondary,
+            margin: 0,
+          }}
         >
           {personal.role}
         </p>
       </div>
 
+      {/* Social links row: LinkedIn, GitHub, and Resume (borderless with ExternalLink icon) */}
+      <div
+        className="anim-social"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 16,
+          marginBottom: 32,
+          flexShrink: 0,
+        }}
+      >
+        {/* LinkedIn */}
+        <a
+          href={LINKS.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            color: COLORS.textSecondary,
+            textDecoration: 'none',
+            transition: 'color 150ms ease-out',
+          }}
+          onMouseEnter={e => (e.currentTarget.style.color = COLORS.accent)}
+          onMouseLeave={e => (e.currentTarget.style.color = COLORS.textSecondary)}
+        >
+          <RiLinkedinBoxFill size={22} />
+        </a>
+
+        {/* GitHub */}
+        <a
+          href={LINKS.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            color: COLORS.textSecondary,
+            textDecoration: 'none',
+            transition: 'color 150ms ease-out',
+          }}
+          onMouseEnter={e => (e.currentTarget.style.color = COLORS.accent)}
+          onMouseLeave={e => (e.currentTarget.style.color = COLORS.textSecondary)}
+        >
+          <RiGithubFill size={22} />
+        </a>
+
+        {/* Resume: External link icon before text, border removed, clean hover transition */}
+        <a
+          href={LINKS.resume}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 6,
+            background: 'transparent',
+            border: 'none',
+            padding: 0,
+            color: COLORS.textSecondary,
+            fontFamily: FONTS.family.mono,
+            fontSize: FONTS.size.sm,
+            fontWeight: FONTS.weight.medium,
+            textDecoration: 'none',
+            letterSpacing: '0.04em',
+            transition: 'color 150ms ease-out',
+          }}
+          onMouseEnter={e => (e.currentTarget.style.color = COLORS.accent)}
+          onMouseLeave={e => (e.currentTarget.style.color = COLORS.textSecondary)}
+        >
+          <ExternalLink size={15} strokeWidth={1.75} />
+          Resume
+        </a>
+      </div>
+
       {/* Section nav */}
       <nav aria-label="Page sections">
-        <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 4 }}>
+        <ul
+          style={{
+            listStyle: 'none',
+            margin: 0,
+            padding: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 6,
+          }}
+        >
           {NAV_ITEMS.map(({ id, label }) => {
             const isActive = activeSection === id;
             return (
@@ -145,11 +246,7 @@ export function LeftColumn({ activeSection }: LeftColumnProps) {
                     border: 'none',
                     cursor: 'pointer',
                     padding: '6px 0',
-                    fontFamily: "'Space Grotesk', sans-serif",
-                    fontSize: 14,
-                    fontWeight: 500,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.08em',
+                    ...FONTS.presets.navItem,
                     color: isActive ? COLORS.textPrimary : COLORS.textMuted,
                     transition: 'color 150ms ease-out',
                     width: '100%',

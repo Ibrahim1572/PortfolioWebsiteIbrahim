@@ -1,20 +1,24 @@
 import { Briefcase } from 'lucide-react';
 import { history } from '../../data/content';
 import { COLORS } from '../../constants/colors';
+import { FONTS } from '../../constants/fonts';
 
 export function History() {
   return (
     <section
-      id="history"
+      id="career-history"
       aria-labelledby="history-heading"
       style={{ marginBottom: 80 }}
     >
       <h2
         id="history-heading"
-        className="font-display text-2xl-port"
-        style={{ fontWeight: 700, color: COLORS.textPrimary, margin: '0 0 36px' }}
+        style={{
+          ...FONTS.presets.sectionHeading,
+          color: COLORS.textPrimary,
+          margin: '0 0 36px',
+        }}
       >
-        History.
+        Career History.
       </h2>
 
       {/* Timeline container */}
@@ -35,7 +39,7 @@ export function History() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
           {history.map((job) => (
             <div key={job.id} style={{ position: 'relative' }}>
-              {/* Node */}
+              {/* Node: background is job card surface color, briefcase icon is amber (accent) color */}
               <div
                 aria-hidden="true"
                 style={{
@@ -45,18 +49,19 @@ export function History() {
                   width: 40,
                   height: 40,
                   borderRadius: '50%',
-                  background: COLORS.accent,
+                  background: COLORS.surface,
+                  border: `1px solid ${COLORS.border}`,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: '#fff',
+                  color: COLORS.accent,
                   zIndex: 1,
                 }}
               >
                 <Briefcase size={18} strokeWidth={1.75} />
               </div>
 
-              {/* Card */}
+              {/* Job Card */}
               <article
                 style={{
                   background: COLORS.surface,
@@ -65,29 +70,50 @@ export function History() {
                   padding: '20px 24px',
                 }}
               >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 8, marginBottom: 8 }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'flex-start',
+                    flexWrap: 'wrap',
+                    gap: 8,
+                    marginBottom: 8,
+                  }}
+                >
                   <h3
-                    className="font-display text-lg-port"
-                    style={{ fontWeight: 600, color: COLORS.textPrimary, margin: 0 }}
+                    style={{
+                      ...FONTS.presets.subHeading,
+                      color: COLORS.textPrimary,
+                      margin: 0,
+                    }}
                   >
                     {job.role}
                   </h3>
                   <span
-                    className="font-mono text-sm-port"
-                    style={{ color: COLORS.textMuted, flexShrink: 0 }}
+                    style={{
+                      ...FONTS.presets.dateMono,
+                      color: COLORS.textMuted,
+                      flexShrink: 0,
+                    }}
                   >
                     {job.dateRange}
                   </span>
                 </div>
                 <p
-                  className="font-body text-sm-port"
-                  style={{ color: COLORS.textMuted, margin: '0 0 10px' }}
+                  style={{
+                    ...FONTS.presets.bodySm,
+                    color: COLORS.textMuted,
+                    margin: '0 0 10px',
+                  }}
                 >
                   {job.company} · {job.location}
                 </p>
                 <p
-                  className="font-body text-base-port"
-                  style={{ color: COLORS.textSecondary, margin: 0 }}
+                  style={{
+                    ...FONTS.presets.body,
+                    color: COLORS.textSecondary,
+                    margin: 0,
+                  }}
                 >
                   {job.focus}
                 </p>

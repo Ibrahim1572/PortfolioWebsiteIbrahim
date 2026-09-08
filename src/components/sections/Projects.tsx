@@ -3,6 +3,7 @@ import { ExternalLink } from 'lucide-react';
 import { RiGithubFill } from 'react-icons/ri';
 import { projects } from '../../data/content';
 import { COLORS } from '../../constants/colors';
+import { FONTS } from '../../constants/fonts';
 
 function ProjectCard({ project }: { project: typeof projects[number] }) {
   const [hovered, setHovered] = useState(false);
@@ -25,16 +26,23 @@ function ProjectCard({ project }: { project: typeof projects[number] }) {
     >
       {/* Title */}
       <h3
-        className="font-display text-lg-port"
-        style={{ fontWeight: 600, color: COLORS.textPrimary, margin: 0 }}
+        style={{
+          ...FONTS.presets.subHeading,
+          color: COLORS.textPrimary,
+          margin: 0,
+        }}
       >
         {project.title}
       </h3>
 
       {/* Description */}
       <p
-        className="font-body text-base-port"
-        style={{ color: COLORS.textSecondary, margin: 0, flex: 1 }}
+        style={{
+          ...FONTS.presets.body,
+          color: COLORS.textSecondary,
+          margin: 0,
+          flex: 1,
+        }}
       >
         {project.description}
       </p>
@@ -44,8 +52,8 @@ function ProjectCard({ project }: { project: typeof projects[number] }) {
         {project.tech.map(tag => (
           <span
             key={tag}
-            className="font-mono text-micro"
             style={{
+              ...FONTS.presets.tag,
               padding: '3px 8px',
               background: COLORS.surfaceRaised,
               border: `1px solid ${COLORS.border}`,
@@ -105,8 +113,11 @@ export function Projects() {
     >
       <h2
         id="projects-heading"
-        className="font-display text-2xl-port"
-        style={{ fontWeight: 700, color: COLORS.textPrimary, margin: '0 0 28px' }}
+        style={{
+          ...FONTS.presets.sectionHeading,
+          color: COLORS.textPrimary,
+          margin: '0 0 28px',
+        }}
       >
         Projects.
       </h2>

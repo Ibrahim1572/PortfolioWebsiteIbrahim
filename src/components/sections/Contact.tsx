@@ -2,6 +2,7 @@ import { Mail, ExternalLink } from 'lucide-react';
 import { RiLinkedinBoxFill } from 'react-icons/ri';
 import { COLORS } from '../../constants/colors';
 import { LINKS } from '../../constants/links';
+import { FONTS } from '../../constants/fonts';
 
 interface ContactButtonProps {
   href: string;
@@ -14,30 +15,30 @@ function ContactButton({ href, children, download }: ContactButtonProps) {
     <a
       href={href}
       {...(download ? { download: true } : { target: '_blank', rel: 'noopener noreferrer' })}
-      className="font-body text-sm-port"
       style={{
+        ...FONTS.presets.bodySm,
         display: 'inline-flex',
         alignItems: 'center',
         gap: 8,
         padding: '10px 22px',
-        border: `1px solid ${COLORS.accent}`,
+        border: `1px solid ${COLORS.border}`,
         borderRadius: '4px',
-        color: COLORS.accent,
+        color: COLORS.textSecondary,
         background: 'transparent',
-        fontWeight: 500,
+        fontWeight: FONTS.weight.medium,
         textDecoration: 'none',
-        transition: 'background 150ms ease-out, color 150ms ease-out',
+        transition: 'color 150ms ease-out, border-color 150ms ease-out',
         letterSpacing: '0.02em',
       }}
       onMouseEnter={e => {
         const el = e.currentTarget;
-        el.style.background = COLORS.accent;
-        el.style.color = COLORS.canvas;
+        el.style.borderColor = COLORS.accent;
+        el.style.color = COLORS.accent;
       }}
       onMouseLeave={e => {
         const el = e.currentTarget;
-        el.style.background = 'transparent';
-        el.style.color = COLORS.accent;
+        el.style.borderColor = COLORS.border;
+        el.style.color = COLORS.textSecondary;
       }}
     >
       {children}
@@ -54,8 +55,11 @@ export function Contact() {
     >
       <h2
         id="contact-heading"
-        className="font-display text-2xl-port"
-        style={{ fontWeight: 700, color: COLORS.textPrimary, margin: '0 0 28px' }}
+        style={{
+          ...FONTS.presets.sectionHeading,
+          color: COLORS.textPrimary,
+          margin: '0 0 28px',
+        }}
       >
         Contact.
       </h2>

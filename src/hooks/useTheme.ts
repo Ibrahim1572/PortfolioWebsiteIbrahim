@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { applyThemeColors } from '../constants/colors';
 
 type Theme = 'light' | 'dark';
 
@@ -15,6 +16,8 @@ export function useTheme(): [Theme, () => void] {
     const root = document.documentElement;
     root.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
+    // Apply theme colors directly from constants/colors.ts
+    applyThemeColors(theme);
   }, [theme]);
 
   const toggle = () => setTheme(t => (t === 'light' ? 'dark' : 'light'));
