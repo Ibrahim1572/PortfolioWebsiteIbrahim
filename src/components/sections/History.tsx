@@ -1,5 +1,6 @@
 import { Briefcase } from 'lucide-react';
 import { history } from '../../data/content';
+import { COLORS } from '../../constants/colors';
 
 export function History() {
   return (
@@ -11,7 +12,7 @@ export function History() {
       <h2
         id="history-heading"
         className="font-display text-2xl-port"
-        style={{ fontWeight: 700, color: 'var(--color-text-primary)', margin: '0 0 36px' }}
+        style={{ fontWeight: 700, color: COLORS.textPrimary, margin: '0 0 36px' }}
       >
         History.
       </h2>
@@ -27,7 +28,7 @@ export function History() {
             top: 0,
             bottom: 0,
             width: 2,
-            background: 'var(--color-border-subtle)',
+            background: COLORS.borderSubtle,
           }}
         />
 
@@ -44,7 +45,7 @@ export function History() {
                   width: 40,
                   height: 40,
                   borderRadius: '50%',
-                  background: 'var(--color-accent)',
+                  background: COLORS.accent,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -58,8 +59,8 @@ export function History() {
               {/* Card */}
               <article
                 style={{
-                  background: 'var(--color-surface)',
-                  border: '1px solid var(--color-border)',
+                  background: COLORS.surface,
+                  border: `1px solid ${COLORS.border}`,
                   borderRadius: '4px',
                   padding: '20px 24px',
                 }}
@@ -67,26 +68,26 @@ export function History() {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 8, marginBottom: 8 }}>
                   <h3
                     className="font-display text-lg-port"
-                    style={{ fontWeight: 600, color: 'var(--color-text-primary)', margin: 0 }}
+                    style={{ fontWeight: 600, color: COLORS.textPrimary, margin: 0 }}
                   >
                     {job.role}
                   </h3>
                   <span
                     className="font-mono text-sm-port"
-                    style={{ color: 'var(--color-text-muted)', flexShrink: 0 }}
+                    style={{ color: COLORS.textMuted, flexShrink: 0 }}
                   >
                     {job.dateRange}
                   </span>
                 </div>
                 <p
                   className="font-body text-sm-port"
-                  style={{ color: 'var(--color-text-muted)', margin: '0 0 10px' }}
+                  style={{ color: COLORS.textMuted, margin: '0 0 10px' }}
                 >
                   {job.company} · {job.location}
                 </p>
                 <p
                   className="font-body text-base-port"
-                  style={{ color: 'var(--color-text-secondary)', margin: 0 }}
+                  style={{ color: COLORS.textSecondary, margin: 0 }}
                 >
                   {job.focus}
                 </p>

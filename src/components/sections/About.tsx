@@ -1,4 +1,5 @@
 import { about } from '../../data/content';
+import { COLORS } from '../../constants/colors';
 
 export function About() {
   return (
@@ -12,7 +13,7 @@ export function About() {
         className="font-display text-2xl-port"
         style={{
           fontWeight: 700,
-          color: 'var(--color-text-primary)',
+          color: COLORS.textPrimary,
           margin: '0 0 28px',
         }}
       >
@@ -23,7 +24,7 @@ export function About() {
           <p
             key={i}
             className="font-body text-base-port"
-            style={{ color: 'var(--color-text-secondary)', margin: 0 }}
+            style={{ color: COLORS.textSecondary, margin: 0 }}
           >
             {para}
           </p>

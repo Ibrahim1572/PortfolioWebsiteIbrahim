@@ -1,13 +1,15 @@
 import { RiGithubFill } from 'react-icons/ri';
 import { RiLinkedinBoxFill } from 'react-icons/ri';
 import { personal } from '../data/content';
+import { COLORS } from '../constants/colors';
+import { LINKS } from '../constants/links';
 
 const NAV_ITEMS = [
-  { id: 'about',    label: 'About' },
-  { id: 'skills',   label: 'Skills' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'history',  label: 'History' },
-  { id: 'contact',  label: 'Contact' },
+  { id: 'about',     label: 'About' },
+  { id: 'expertise', label: 'Expertise' },
+  { id: 'projects',  label: 'Projects' },
+  { id: 'history',   label: 'History' },
+  { id: 'contact',   label: 'Contact' },
 ];
 
 interface LeftColumnProps {
@@ -30,9 +32,9 @@ function AvatarPlaceholder() {
       aria-hidden="true"
       style={{ display: 'block' }}
     >
-      <circle cx="70" cy="70" r="70" fill="var(--color-surface)" />
-      <circle cx="70" cy="56" r="26" fill="var(--color-border)" />
-      <ellipse cx="70" cy="120" rx="40" ry="30" fill="var(--color-border)" />
+      <circle cx="70" cy="70" r="70" fill={COLORS.surface} />
+      <circle cx="70" cy="56" r="26" fill={COLORS.border} />
+      <ellipse cx="70" cy="120" rx="40" ry="30" fill={COLORS.border} />
     </svg>
   );
 }
@@ -47,99 +49,83 @@ export function LeftColumn({ activeSection }: LeftColumnProps) {
         left: 0,
         width: 'min(38%, 420px)',
         height: 'calc(100vh - 60px)',
-        backgroundColor: 'var(--color-canvas)',
+        backgroundColor: COLORS.canvas,
         display: 'flex',
         flexDirection: 'column',
-        padding: '48px 40px',
-        overflowY: 'auto',
+        padding: '40px 40px',
+        overflow: 'hidden',
         zIndex: 40,
       }}
     >
-      {/* Photo */}
+      {/* Photo + Social icons row */}
       <div
         className="anim-photo"
         style={{
-          width: 154,
-          height: 154,
-          borderRadius: '50%',
-          padding: 3,
-          background: 'transparent',
-          boxShadow: '0 0 0 2px var(--color-accent)',
-          marginBottom: 28,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 18,
+          marginBottom: 24,
           flexShrink: 0,
         }}
       >
-        <div style={{ borderRadius: '50%', overflow: 'hidden', width: 148, height: 148 }}>
-          <AvatarPlaceholder />
+        {/* Circular photo with accent ring */}
+        <div
+          style={{
+            width: 154,
+            height: 154,
+            borderRadius: '50%',
+            padding: 3,
+            boxShadow: `0 0 0 2px ${COLORS.accent}`,
+            flexShrink: 0,
+          }}
+        >
+          <div style={{ borderRadius: '50%', overflow: 'hidden', width: 148, height: 148 }}>
+            <AvatarPlaceholder />
+          </div>
+        </div>
+
+        {/* Social icon links — no border, no box */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+          {[
+            { href: LINKS.github,   Icon: RiGithubFill,      label: 'GitHub' },
+            { href: LINKS.linkedin, Icon: RiLinkedinBoxFill, label: 'LinkedIn' },
+          ].map(({ href, Icon, label }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                color: COLORS.textSecondary,
+                textDecoration: 'none',
+                transition: 'color 150ms ease-out',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.color = COLORS.accent)}
+              onMouseLeave={e => (e.currentTarget.style.color = COLORS.textSecondary)}
+            >
+              <Icon size={26} />
+            </a>
+          ))}
         </div>
       </div>
 
-      {/* Name + Role + Tagline */}
-      <div className="anim-name" style={{ marginBottom: 24 }}>
+      {/* Name + Role (no tagline) */}
+      <div className="anim-name" style={{ marginBottom: 36, flexShrink: 0 }}>
         <h1
           className="font-display text-display"
-          style={{ color: 'var(--color-text-primary)', fontWeight: 700, margin: '0 0 8px' }}
+          style={{ color: COLORS.textPrimary, fontWeight: 700, margin: '0 0 8px' }}
         >
           {personal.name}
         </h1>
         <p
           className="font-display text-lg-port"
-          style={{ color: 'var(--color-text-secondary)', fontWeight: 500, margin: '0 0 6px' }}
+          style={{ color: COLORS.textSecondary, fontWeight: 500, margin: 0 }}
         >
           {personal.role}
         </p>
-        <p
-          className="font-body text-base-port"
-          style={{ color: 'var(--color-text-secondary)', margin: 0 }}
-        >
-          {personal.tagline}
-        </p>
-      </div>
-
-      {/* Social icons */}
-      <div
-        className="anim-social"
-        style={{ display: 'flex', gap: 10, marginBottom: 48 }}
-      >
-        {[
-          { href: personal.github,   Icon: RiGithubFill,      label: 'GitHub' },
-          { href: personal.linkedin, Icon: RiLinkedinBoxFill, label: 'LinkedIn' },
-        ].map(({ href, Icon, label }) => (
-          <a
-            key={label}
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={label}
-            style={{
-              width: 40,
-              height: 40,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: '1px solid var(--color-border)',
-              borderRadius: '4px',
-              color: 'var(--color-text-secondary)',
-              background: 'transparent',
-              transition: 'color 150ms ease-out, background 150ms ease-out, border-color 150ms ease-out',
-              textDecoration: 'none',
-            }}
-            onMouseEnter={e => {
-              const el = e.currentTarget;
-              el.style.background = 'var(--color-accent)';
-              el.style.borderColor = 'var(--color-accent)';
-              el.style.color = 'var(--color-canvas)';
-            }}
-            onMouseLeave={e => {
-              const el = e.currentTarget;
-              el.style.background = 'transparent';
-              el.style.borderColor = 'var(--color-border)';
-              el.style.color = 'var(--color-text-secondary)';
-            }}
-          >
-            <Icon size={20} />
-          </a>
-        ))}
       </div>
 
       {/* Section nav */}
@@ -164,7 +150,7 @@ export function LeftColumn({ activeSection }: LeftColumnProps) {
                     fontWeight: 500,
                     textTransform: 'uppercase',
                     letterSpacing: '0.08em',
-                    color: isActive ? 'var(--color-text-primary)' : 'var(--color-text-muted)',
+                    color: isActive ? COLORS.textPrimary : COLORS.textMuted,
                     transition: 'color 150ms ease-out',
                     width: '100%',
                     textAlign: 'left',
@@ -176,7 +162,7 @@ export function LeftColumn({ activeSection }: LeftColumnProps) {
                       display: 'block',
                       width: isActive ? 20 : 0,
                       height: 2,
-                      background: 'var(--color-accent)',
+                      background: COLORS.accent,
                       transition: 'width 150ms ease-out',
                       flexShrink: 0,
                     }}

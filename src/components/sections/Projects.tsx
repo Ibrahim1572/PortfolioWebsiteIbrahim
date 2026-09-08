@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
 import { RiGithubFill } from 'react-icons/ri';
 import { projects } from '../../data/content';
+import { COLORS } from '../../constants/colors';
 
 function ProjectCard({ project }: { project: typeof projects[number] }) {
   const [hovered, setHovered] = useState(false);
@@ -11,8 +12,8 @@ function ProjectCard({ project }: { project: typeof projects[number] }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        background: 'var(--color-surface)',
-        border: `1px solid ${hovered ? 'var(--color-accent)' : 'var(--color-border)'}`,
+        background: COLORS.surface,
+        border: `1px solid ${hovered ? COLORS.accent : COLORS.border}`,
         borderRadius: '4px',
         padding: '24px',
         display: 'flex',
@@ -25,7 +26,7 @@ function ProjectCard({ project }: { project: typeof projects[number] }) {
       {/* Title */}
       <h3
         className="font-display text-lg-port"
-        style={{ fontWeight: 600, color: 'var(--color-text-primary)', margin: 0 }}
+        style={{ fontWeight: 600, color: COLORS.textPrimary, margin: 0 }}
       >
         {project.title}
       </h3>
@@ -33,7 +34,7 @@ function ProjectCard({ project }: { project: typeof projects[number] }) {
       {/* Description */}
       <p
         className="font-body text-base-port"
-        style={{ color: 'var(--color-text-secondary)', margin: 0, flex: 1 }}
+        style={{ color: COLORS.textSecondary, margin: 0, flex: 1 }}
       >
         {project.description}
       </p>
@@ -46,10 +47,10 @@ function ProjectCard({ project }: { project: typeof projects[number] }) {
             className="font-mono text-micro"
             style={{
               padding: '3px 8px',
-              background: 'var(--color-surface-raised)',
-              border: '1px solid var(--color-border)',
+              background: COLORS.surfaceRaised,
+              border: `1px solid ${COLORS.border}`,
               borderRadius: '4px',
-              color: 'var(--color-text-secondary)',
+              color: COLORS.textSecondary,
             }}
           >
             {tag}
@@ -82,13 +83,13 @@ function IconLink({ href, label, children }: { href: string; label: string; chil
       rel="noopener noreferrer"
       aria-label={label}
       style={{
-        color: 'var(--color-text-secondary)',
+        color: COLORS.textSecondary,
         display: 'flex',
         alignItems: 'center',
         transition: 'color 150ms ease-out',
       }}
-      onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-accent)')}
-      onMouseLeave={e => (e.currentTarget.style.color = 'var(--color-text-secondary)')}
+      onMouseEnter={e => (e.currentTarget.style.color = COLORS.accent)}
+      onMouseLeave={e => (e.currentTarget.style.color = COLORS.textSecondary)}
     >
       {children}
     </a>
@@ -105,7 +106,7 @@ export function Projects() {
       <h2
         id="projects-heading"
         className="font-display text-2xl-port"
-        style={{ fontWeight: 700, color: 'var(--color-text-primary)', margin: '0 0 28px' }}
+        style={{ fontWeight: 700, color: COLORS.textPrimary, margin: '0 0 28px' }}
       >
         Projects.
       </h2>

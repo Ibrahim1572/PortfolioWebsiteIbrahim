@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Obsolete / Deprecated files
+src/components/sections/Skills.tsx

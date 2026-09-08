@@ -1,4 +1,7 @@
-import { personal } from '../../data/content';
+import { Mail, ExternalLink } from 'lucide-react';
+import { RiLinkedinBoxFill } from 'react-icons/ri';
+import { COLORS } from '../../constants/colors';
+import { LINKS } from '../../constants/links';
 
 interface ContactButtonProps {
   href: string;
@@ -15,10 +18,11 @@ function ContactButton({ href, children, download }: ContactButtonProps) {
       style={{
         display: 'inline-flex',
         alignItems: 'center',
-        padding: '10px 24px',
-        border: '1px solid var(--color-accent)',
+        gap: 8,
+        padding: '10px 22px',
+        border: `1px solid ${COLORS.accent}`,
         borderRadius: '4px',
-        color: 'var(--color-accent)',
+        color: COLORS.accent,
         background: 'transparent',
         fontWeight: 500,
         textDecoration: 'none',
@@ -27,13 +31,13 @@ function ContactButton({ href, children, download }: ContactButtonProps) {
       }}
       onMouseEnter={e => {
         const el = e.currentTarget;
-        el.style.background = 'var(--color-accent)';
-        el.style.color = 'var(--color-canvas)';
+        el.style.background = COLORS.accent;
+        el.style.color = COLORS.canvas;
       }}
       onMouseLeave={e => {
         const el = e.currentTarget;
         el.style.background = 'transparent';
-        el.style.color = 'var(--color-accent)';
+        el.style.color = COLORS.accent;
       }}
     >
       {children}
@@ -51,14 +55,23 @@ export function Contact() {
       <h2
         id="contact-heading"
         className="font-display text-2xl-port"
-        style={{ fontWeight: 700, color: 'var(--color-text-primary)', margin: '0 0 28px' }}
+        style={{ fontWeight: 700, color: COLORS.textPrimary, margin: '0 0 28px' }}
       >
         Contact.
       </h2>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14 }}>
-        <ContactButton href={`mailto:${personal.email}`}>Email Me</ContactButton>
-        <ContactButton href={personal.linkedin}>LinkedIn</ContactButton>
-        <ContactButton href={personal.resume} download>View Résumé</ContactButton>
+        <ContactButton href={`mailto:${LINKS.email}`}>
+          <Mail size={16} />
+          Mail Me
+        </ContactButton>
+        <ContactButton href={LINKS.linkedin}>
+          <RiLinkedinBoxFill size={18} />
+          LinkedIn
+        </ContactButton>
+        <ContactButton href={LINKS.resume} download>
+          <ExternalLink size={16} />
+          View Résumé
+        </ContactButton>
       </div>
     </section>
   );
