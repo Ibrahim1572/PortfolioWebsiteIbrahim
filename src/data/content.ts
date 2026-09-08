@@ -6,7 +6,7 @@ import { LINKS } from '../constants/links';
 
 export const personal = {
   name: "Muhammad Ibrahim Umar",
-  role: "Web Developer & AI-ML Engineer",
+  role: "Full Stack AI/ML Engineer",
   tagline: "Building intelligent interfaces, one commit at a time.",
   email: LINKS.email,
   github: LINKS.github,
@@ -15,38 +15,28 @@ export const personal = {
 };
 
 export const about = [
-  "I'm a full-stack developer and machine-learning engineer with a passion for shipping products that sit at the intersection of elegant UX and intelligent systems. I write TypeScript by day, train models by night, and obsess over the milliseconds in between.",
-  "Previously, I've led front-end architecture at early-stage startups, contributed to open-source ML tooling, and spent a year embedded with a research team working on large-language-model evaluation frameworks.",
-  "When I'm not at a keyboard I'm usually trail-running, reading about cognitive science, or dismantling some perfectly functional piece of electronics to see what's inside.",
+  "I'm a full stack AI/ML engineer in my third year of an Artificial Intelligence degree at Ghulam Ishaq Khan Institute. My coursework in machine learning, data structures, and software design has fed directly into independent projects spanning NLP, computer vision, and full stack development. A recent hands on internship gave me practical exposure to production style applications beyond the classroom. I'm interested in both web development and AI/ML, with a growing focus on DevOps and deployment.",
+  "Outside academics, I've been part of IET on Campus at GIKI for over two years, now serving as Head after being promoted from Volunteer, and previously helped organize a nationwide innovation summit with over 300 attendees. I've also volunteered with Shaukat Khanum Memorial Cancer Hospital and play football regularly. I bring technical depth alongside genuine initiative to everything I take on, and I do this simply because I love the things I do and taking on new challenges.",
 ];
 
 export const history = [
   {
     id: "job-1",
-    role: "Senior Full-Stack Engineer",
-    company: "Nexus AI",
-    location: "San Francisco, CA (Remote)",
-    dateRange: "2023 – Present",
+    role: "Software Engineering Intern",
+    company: "CyberNest",
+    location: "Lahore, Pakistan",
+    dateRange: "JUN 2026 – AUG 2026",
     focus:
-      "Led re-architecture of the core product dashboard from CRA to Vite + React, reduced bundle size by 62%, designed and shipped an AI-assisted data-annotation UI used by 40+ enterprise clients.",
+      "Learned full-stack web development from the ground up,  picked up JavaScript, Next.js, React, and Tailwind CSS, along with Flask backend. Built practice projects implementing Google Authentication using OAuth 2.0, MongoDB integration, and RBAC, and deployed applications on Vercel to gain hands on exposure to production grade development workflows.",
   },
   {
     id: "job-2",
-    role: "ML Engineer",
-    company: "Orbital Labs",
-    location: "London, UK",
-    dateRange: "2021 – 2023",
+    role: "Junior Year Artificial Intellegence Student",
+    company: "Ghulam Ishaq Khan Institute",
+    location: "Topi, Pakistan",
+    dateRange: "2024 – Present",
     focus:
-      "Built NLP pipelines for document classification and information extraction. Deployed fine-tuned transformer models to production via FastAPI and containerised inference on AWS ECS.",
-  },
-  {
-    id: "job-3",
-    role: "Front-End Developer",
-    company: "Patchwork Studio",
-    location: "Dubai, UAE",
-    dateRange: "2019 – 2021",
-    focus:
-      "Delivered responsive React web apps for clients in fintech and e-commerce. Introduced TypeScript to the team's workflow and established component-library conventions still in use today.",
+      "Building a strong foundation in AI/ML and software engineering through coursework in machine learning, data structures & algorithms, and software design. Applying these concepts through independent projects spanning NLP, computer vision, and full-stack development, with growing focus on practical, deployable AI systems.",
   },
 ];
 
@@ -97,28 +87,21 @@ export const skills = {
     "Vite",
     "Node.js",
     "Tailwind CSS",
-    "GraphQL",
     "REST APIs",
     "PostgreSQL",
-    "Redis",
     "Docker",
-    "AWS",
+    "Vercel",
     "CI/CD",
-    "Webpack",
   ],
   aiMl: [
     "Python",
     "PyTorch",
-    "TensorFlow",
-    "Hugging Face",
-    "LangChain",
-    "FAISS",
     "scikit-learn",
     "Pandas",
     "NumPy",
-    "FastAPI",
-    "MLflow",
+    "Fast API",
     "RAG",
     "Prompt Engineering",
+    "LLM APIs", 
   ],
 };
