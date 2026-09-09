@@ -27,7 +27,7 @@ export const history = [
     location: "Lahore, Pakistan",
     dateRange: "JUN 2026 – AUG 2026",
     focus:
-      "Learned full-stack web development from the ground up,  picked up JavaScript, Next.js, React, and Tailwind CSS, along with Flask backend. Built practice projects implementing Google Authentication using OAuth 2.0, MongoDB integration, and RBAC, and deployed applications on Vercel to gain hands on exposure to production grade development workflows.",
+      "Learned full-stack web development from the ground up, picked up JavaScript, Next.js, React, and Tailwind CSS, along with Flask backend. Built practice projects implementing Google Authentication using OAuth 2.0, MongoDB integration, and RBAC, and deployed applications on Vercel to gain hands on exposure to production grade development workflows.",
   },
   {
     id: "job-2",
@@ -40,43 +40,95 @@ export const history = [
   },
 ];
 
+export interface ProjectItem {
+  id: string;
+  title: string;
+  description: string;       // Full detailed description (used in Featured Projects section)
+  shortDescription: string;  // 1-liner description (used in More Projects section)
+  status: 'featured' | 'archive'; // Set to 'featured' to show in Projects, or 'archive' to show in More Projects
+  tech: string[];
+  github: string;
+  live: string | null;
+}
+
 export const projects = [
   {
-    id: "proj-1",
-    title: "Contexto — Semantic Search Engine",
-    description:
-      "A full-stack semantic search tool that embeds documents with sentence-transformers and retrieves them via FAISS. Features a React query interface with real-time result streaming.",
-    tech: ["Python", "FastAPI", "React", "FAISS", "sentence-transformers", "Docker"],
-    github: LINKS.projects.contexto.github,
-    live: LINKS.projects.contexto.live,
+  id: "proj-1",
+  title: "Philosophical Text Engine",
+  description:
+    "Built a hybrid ML pipeline to classify philosophical text passages into branches and schools of thought using a multi-tier Hierarchical MLP in PyTorch. Combines a deterministic SVM baseline, probabilistic Neural Network predictions, and unsupervised K-Means clustering for multi-perspective analysis, with TF-IDF vectorization, NLTK preprocessing, and PCA-based 2D visualization of philosophical distance between texts.",
+  shortDescription: "A hybrid ML pipeline classifying philosophical texts using SVM, Neural Networks, and clustering.",
+  status: "featured",
+  tech: ["Python", "PyTorch", "scikit-learn", "FastAPI", "Docker", "NLTK"],
+  github: null,
+  live: null,
+},
+{
+  id: "proj-6",
+  title: "Full-Stack Auth App — Next.js",
+  description:
+    "A full-stack web application built during a software engineering internship to learn production-grade development practices. Implements Google Authentication, MongoDB integration for data persistence, and form validation, built using Next.js, React, and Tailwind CSS, and deployed on Vercel.",
+  shortDescription: "A full-stack Next.js app with Google Auth and MongoDB, built during an internship.",
+  status: "featured",
+  tech: ["Next.js", "React", "Tailwind CSS", "MongoDB", "Google Auth"],
+  github: null,
+  live: null,
+ },
+  {
+  id: "proj-2",
+  title: "Smart Saver — Grocery Substitution Engine",
+  description:
+    "A full-stack web app built independently at Micathon 2026 that uses AI-powered OCR to scan grocery receipts, identify imported products, and recommend local alternatives. Integrates Gemini 2.5 Flash Vision API on a FastAPI backend to extract item details, cross-referenced against a curated substitutions database, with a React frontend featuring Recharts-powered savings dashboards.",
+  shortDescription: "An AI-powered receipt scanner that recommends local grocery substitutes to cut spending.",
+  status: "featured",
+  tech: ["FastAPI", "Gemini API", "React", "Recharts", "Docker"],
+  github: null,
+  live: null,
   },
   {
-    id: "proj-2",
-    title: "Synapse UI — Component Library",
-    description:
-      "An accessible, design-token-driven React component library with full TypeScript types, Storybook documentation, and automated visual-regression tests via Chromatic.",
-    tech: ["React", "TypeScript", "Storybook", "Tailwind CSS", "Chromatic"],
-    github: LINKS.projects.synapseUi.github,
-    live: LINKS.projects.synapseUi.live,
+  id: "proj-3",
+  title: "Anomaly Detection via Statistical Intensity Analysis",
+  description:
+    "An anomaly detection system using first-principles statistical analysis instead of Deep Learning, addressing the rare-event problem in computer vision. Flags pixel-level anomalies based on deviation from mean/standard deviation thresholds, with isolated R/G/B channel maps for defect-type isolation. Optimized to O(N) complexity for real-time performance, achieving zero-shot crack detection without labeled training data.",
+  shortDescription: "A statistics-based anomaly detector for computer vision, no deep learning required.",
+  status: "archive",
+  tech: ["Python", "NumPy", "Pillow", "Streamlit"],
+  github: null,
+  live: null,
   },
   {
-    id: "proj-3",
-    title: "LLM Eval Harness",
-    description:
-      "A configurable evaluation framework for benchmarking large language models on custom task suites. Supports parallel inference, metric aggregation, and a web-based results dashboard.",
-    tech: ["Python", "PyTorch", "FastAPI", "SQLite", "React", "Vite"],
-    github: LINKS.projects.llmEval.github,
-    live: LINKS.projects.llmEval.live,
+  id: "proj-4",
+  title: "PC Parts Optimization Platform",
+  description:
+    "A budget-aware PC build recommendation platform using a heuristic scoring engine. Users specify a budget and use case (Gaming, ML, General) to receive top GPU/CPU pairings, with a weighted scoring system normalizing raw hardware benchmarks via min-max scaling and use-case-specific weights.",
+  shortDescription: "A budget-aware PC build recommender using weighted hardware benchmark scoring.",
+  status: "archive",
+  tech: ["FastAPI", "Pandas", "React", "Tailwind CSS"],
+  github: null,
+  live: null,
   },
   {
-    id: "proj-4",
-    title: "TrailMapper",
-    description:
-      "A Progressive Web App for offline trail navigation. Uses IndexedDB for tile caching, the Geolocation API for live tracking, and a custom React map renderer built on top of Leaflet.",
-    tech: ["React", "TypeScript", "Leaflet", "IndexedDB", "PWA", "Node.js"],
-    github: LINKS.projects.trailMapper.github,
-    live: LINKS.projects.trailMapper.live,
-  },
+  id: "proj-5",
+  title: "Music Playlist Management System",
+  description:
+    "A high-performance music management and playback system built without external databases. Implements AVL Trees for O(log n) lookups, a custom Polynomial Rolling Hash Table, and Merge Sort for ranking Most Liked songs, with a Graph Theory/BFS-based recommendation engine driven by listening patterns.",
+  shortDescription: "A custom-built music playback engine using AVL Trees, hashing, and graph-based recommendations.",
+  status: "featured",
+  tech: ["C++", "SFML", "Data Structures & Algorithms"],
+  github: null,
+  live: null,
+},
+ {
+  id: "proj-7",
+  title: "Full-Stack Auth App — Flask & React",
+  description:
+    "A full-stack web application built during the same internship, using a Flask backend as an alternative to Next.js to broaden exposure to different stacks. Implements the same core features: Google Authentication, MongoDB integration, and form validation, with a React (Vite) frontend, deployed on Vercel.",
+  shortDescription: "A Flask + React (Vite) counterpart to the Next.js auth app, built for stack comparison.",
+  status: "archive",
+  tech: ["Flask", "React", "Vite", "MongoDB", "Google Auth"],
+  github: null,
+  live: null,
+ },
 ];
 
 export const skills = {

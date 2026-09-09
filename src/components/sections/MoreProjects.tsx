@@ -5,7 +5,7 @@ import { projects} from '../../data/content';
 import { COLORS } from '../../constants/colors';
 import { FONTS } from '../../constants/fonts';
 
-function ProjectCard({ project }: { project: typeof projects[number]}) {
+function MoreProjectCard({ project }: { project: typeof projects[number] }) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -16,36 +16,46 @@ function ProjectCard({ project }: { project: typeof projects[number]}) {
         background: COLORS.surface,
         border: `1px solid ${hovered ? COLORS.accent : COLORS.border}`,
         borderRadius: '4px',
-        padding: '24px',
+        padding: '18px 22px',
         display: 'flex',
         flexDirection: 'column',
-        gap: 14,
+        gap: 12,
         transform: hovered ? 'translateY(-2px)' : 'translateY(0)',
         transition: 'border-color 150ms ease-out, transform 150ms ease-out',
       }}
     >
-      {/* Title */}
-      <h3
+      {/* Top row: Title + 1-liner description on the same line */}
+      <div
         style={{
-          ...FONTS.presets.subHeading,
-          color: COLORS.textPrimary,
-          margin: 0,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'baseline',
+          gap: 14,
+          flexWrap: 'wrap',
         }}
       >
-        {project.title}
-      </h3>
-
-      {/* Description (full description used for Featured Projects) */}
-      <p
-        style={{
-          ...FONTS.presets.body,
-          color: COLORS.textSecondary,
-          margin: 0,
-          flex: 1,
-        }}
-      >
-        {project.description}
-      </p>
+        <h3
+          style={{
+            ...FONTS.presets.subHeading,
+            color: COLORS.textPrimary,
+            margin: 0,
+            whiteSpace: 'nowrap',
+          }}
+        >
+          {project.title}
+        </h3>
+        <p
+          style={{
+            ...FONTS.presets.bodySm,
+            color: COLORS.textSecondary,
+            margin: 0,
+            flex: 1,
+            minWidth: '200px',
+          }}
+        >
+          {project.shortDescription}
+        </p>
+      </div>
 
       {/* Tech tags */}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
@@ -67,7 +77,7 @@ function ProjectCard({ project }: { project: typeof projects[number]}) {
       </div>
 
       {/* Icon links */}
-      <div style={{ display: 'flex', gap: 12, paddingTop: 4 }}>
+      <div style={{ display: 'flex', gap: 12, paddingTop: 2 }}>
         {project.github && (
           <IconLink href={project.github} label="View on GitHub">
             <RiGithubFill size={18} />
@@ -104,35 +114,35 @@ function IconLink({ href, label, children }: { href: string; label: string; chil
   );
 }
 
-export function Projects() {
-  const featuredProjects = projects.filter(p => p.status === 'featured');
+export function MoreProjects() {
+  const archiveProjects = projects.filter(p => p.status === 'archive');
 
   return (
     <section
-      id="projects"
-      aria-labelledby="projects-heading"
+      id="more-projects"
+      aria-labelledby="more-projects-heading"
       style={{ marginBottom: 80 }}
     >
       <h2
-        id="projects-heading"
+        id="more-projects-heading"
         style={{
           ...FONTS.presets.sectionHeading,
           color: COLORS.textPrimary,
           margin: '0 0 28px',
         }}
       >
-        Projects.
+        More Projects.
       </h2>
 
       <div
         style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(2, 1fr)',
-          gap: 24,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 18,
         }}
       >
-        {featuredProjects.map(project => (
-          <ProjectCard key={project.id} project={project} />
+        {archiveProjects.map(project => (
+          <MoreProjectCard key={project.id} project={project} />
         ))}
       </div>
     </section>

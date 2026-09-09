@@ -19,19 +19,27 @@ export const LINKS = {
   projects: {
     contexto: {
       live: 'https://contexto.example.com',
-      github: 'https://github.com/ibrahim/contexto',
+      github: 'https://github.com/Ibrahim1572/contexto',
     },
     synapseUi: {
       live: 'https://synapse-ui.example.com',
-      github: 'https://github.com/ibrahim/synapse-ui',
+      github: 'https://github.com/Ibrahim1572/synapse-ui',
+    },
+    docuVision: {
+      live: 'https://docuvision.example.com',
+      github: 'https://github.com/Ibrahim1572/docuvision',
     },
     llmEval: {
-      live: null as string | null,
-      github: 'https://github.com/ibrahim/llm-eval',
+      live: 'https://llmeval.example.com',
+      github: 'https://github.com/Ibrahim1572/llm-eval',
     },
     trailMapper: {
       live: 'https://trailmapper.example.com',
-      github: 'https://github.com/ibrahim/trailmapper',
+      github: 'https://github.com/Ibrahim1572/trailmapper',
+    },
+    microFlow: {
+      live: null as string | null,
+      github: 'https://github.com/Ibrahim1572/microflow',
     },
   },
 } as const;

@@ -3,6 +3,7 @@ import { Expertise } from './sections/Expertise';
 import { Projects } from './sections/Projects';
 import { History } from './sections/History';
 import { Contact } from './sections/Contact';
+import { MoreProjects } from './sections/MoreProjects';
 import { COLORS } from '../constants/colors';
 
 export function RightColumn() {
@@ -23,6 +24,7 @@ export function RightColumn() {
       <Expertise />
       <Projects />
       <History />
+      <MoreProjects />
       <Contact />
     </main>
   );

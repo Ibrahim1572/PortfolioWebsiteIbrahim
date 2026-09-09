@@ -12,6 +12,7 @@ const NAV_ITEMS = [
   { id: 'expertise',      label: 'Expertise' },
   { id: 'projects',       label: 'Projects' },
   { id: 'career-history', label: 'Career History' },
+  { id: 'more-projects',  label: 'More Projects' },
   { id: 'contact',        label: 'Contact' },
 ];
 
@@ -24,20 +25,20 @@ function scrollTo(id: string) {
   if (el) el.scrollIntoView({ behavior: 'smooth' });
 }
 
-// SVG avatar placeholder (100x100)
+// SVG avatar placeholder (92x92)
 function AvatarPlaceholder() {
   return (
     <svg
-      viewBox="0 0 100 100"
-      width="100"
-      height="100"
+      viewBox="0 0 92 92"
+      width="92"
+      height="92"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
       style={{ display: 'block' }}
     >
-      <circle cx="50" cy="50" r="50" fill={COLORS.surface} />
-      <circle cx="50" cy="40" r="20" fill={COLORS.border} />
-      <ellipse cx="50" cy="88" rx="30" ry="22" fill={COLORS.border} />
+      <circle cx="46" cy="46" r="46" fill={COLORS.surface} />
+      <circle cx="46" cy="37" r="18" fill={COLORS.border} />
+      <ellipse cx="46" cy="80" rx="27" ry="20" fill={COLORS.border} />
     </svg>
   );
 }
@@ -59,7 +60,7 @@ export function LeftColumn({ activeSection }: LeftColumnProps) {
         borderRight: `2px solid ${COLORS.borderSubtle}`,
         display: 'flex',
         flexDirection: 'column',
-        padding: '36px 36px',
+        padding: '30px 36px',
         overflow: 'hidden',
         zIndex: 40,
       }}
@@ -68,12 +69,12 @@ export function LeftColumn({ activeSection }: LeftColumnProps) {
       <div
         className="anim-photo"
         style={{
-          width: 106,
-          height: 106,
+          width: 98,
+          height: 98,
           borderRadius: '50%',
           padding: 3,
           boxShadow: `0 0 0 2px ${COLORS.accent}`,
-          marginBottom: 18,
+          marginBottom: 14,
           flexShrink: 0,
           overflow: 'hidden',
           display: 'flex',
@@ -85,8 +86,8 @@ export function LeftColumn({ activeSection }: LeftColumnProps) {
           style={{
             borderRadius: '50%',
             overflow: 'hidden',
-            width: 100,
-            height: 100,
+            width: 92,
+            height: 92,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -112,7 +113,7 @@ export function LeftColumn({ activeSection }: LeftColumnProps) {
       </div>
 
       {/* Name: placed below the profile picture */}
-      <div className="anim-name" style={{ marginBottom: 6, flexShrink: 0 }}>
+      <div className="anim-name" style={{ marginBottom: 4, flexShrink: 0 }}>
         <h1
           style={{
             ...FONTS.presets.nameHeading,
@@ -131,7 +132,7 @@ export function LeftColumn({ activeSection }: LeftColumnProps) {
       </div>
 
       {/* Role / Title */}
-      <div style={{ marginBottom: 14, flexShrink: 0 }}>
+      <div style={{ marginBottom: 12, flexShrink: 0 }}>
         <p
           style={{
             ...FONTS.presets.roleTitle,
@@ -150,7 +151,7 @@ export function LeftColumn({ activeSection }: LeftColumnProps) {
           display: 'flex',
           alignItems: 'center',
           gap: 16,
-          marginBottom: 32,
+          marginBottom: 26,
           flexShrink: 0,
         }}
       >
@@ -220,7 +221,7 @@ export function LeftColumn({ activeSection }: LeftColumnProps) {
         </a>
       </div>
 
-      {/* Section nav */}
+      {/* Section nav (including More Projects) */}
       <nav aria-label="Page sections">
         <ul
           style={{
@@ -229,7 +230,7 @@ export function LeftColumn({ activeSection }: LeftColumnProps) {
             padding: 0,
             display: 'flex',
             flexDirection: 'column',
-            gap: 6,
+            gap: 5,
           }}
         >
           {NAV_ITEMS.map(({ id, label }) => {
@@ -245,7 +246,7 @@ export function LeftColumn({ activeSection }: LeftColumnProps) {
                     background: 'transparent',
                     border: 'none',
                     cursor: 'pointer',
-                    padding: '6px 0',
+                    padding: '5px 0',
                     ...FONTS.presets.navItem,
                     color: isActive ? COLORS.textPrimary : COLORS.textMuted,
                     transition: 'color 150ms ease-out',

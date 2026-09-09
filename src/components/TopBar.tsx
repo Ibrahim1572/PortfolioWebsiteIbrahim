@@ -6,6 +6,7 @@ const HEADER_NAV = [
   { id: 'expertise',      label: 'Expertise' },
   { id: 'career-history', label: 'Career History' },
   { id: 'projects',       label: 'Projects' },
+  { id: 'more-projects',  label: 'More Projects' },
   { id: 'contact',        label: 'Contact' },
 ];
 
@@ -54,7 +55,7 @@ export function TopBar({ theme, onToggle }: TopBarProps) {
         {theme === 'light' ? <Sun size={20} strokeWidth={1.75} /> : <Moon size={20} strokeWidth={1.75} />}
       </button>
 
-      {/* Nav links — right */}
+      {/* Nav links — right (including More Projects) */}
       <nav aria-label="Quick navigation">
         <ul
           style={{
@@ -63,7 +64,7 @@ export function TopBar({ theme, onToggle }: TopBarProps) {
             padding: 0,
             display: 'flex',
             alignItems: 'center',
-            gap: 28,
+            gap: 24,
           }}
         >
           {HEADER_NAV.map(({ id, label }) => (
