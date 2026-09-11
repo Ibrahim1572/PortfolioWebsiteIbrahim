@@ -3,18 +3,19 @@
 // All external/internal URLs, live demo links, and asset paths in one place.
 // Update these when deploying.
 // ─────────────────────────────────────────────────────────────────────────────
+import profilePic from '../data/IbrahimProfilePic.jpg'
+import cv from '../data/Resume.pdf'
 
 export const LINKS = {
   // Personal and social links
   github:   'https://github.com/Ibrahim1572',
   linkedin: 'https://www.linkedin.com/in/muhammad-ibrahim-umar-06010b325/',
   email:    '1brahimumar1572@gmail.com',
-  resume:   'src/data/Resume.pdf',
+  resume:   cv,
 
   // Profile image path: set to a URL or a public asset path (e.g., '/profile.jpg')
   // If empty or if loading fails, the profile picture automatically falls back to an avatar illustration
-  profileImage: 'src/data/IbrahimProfilePic.jpg',
-
+  profileImage: profilePic,
   // Live links & repos for projects
   projects: {
     contexto: {
