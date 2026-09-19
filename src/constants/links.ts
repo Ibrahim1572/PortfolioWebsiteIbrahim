@@ -4,7 +4,7 @@
 // Update these when deploying.
 // ─────────────────────────────────────────────────────────────────────────────
 import profilePic from '../data/IbrahimProfilePic.jpg'
-import cv from '../data/Resume.pdf'
+import cv from '../data/Resume_updated_sep2026_v2.pdf'
 
 export const LINKS = {
   // Personal and social links
