@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, ChevronDown } from 'lucide-react';
 import { RiGithubFill } from 'react-icons/ri';
-import { projects} from '../../data/content';
+import { projects } from '../../data/content';
 import { COLORS } from '../../constants/colors';
 import { FONTS } from '../../constants/fonts';
 
-function ProjectCard({ project }: { project: typeof projects[number]}) {
+function ProjectCard({ project }: { project: typeof projects[number] }) {
   const [hovered, setHovered] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   return (
     <article
@@ -47,6 +48,63 @@ function ProjectCard({ project }: { project: typeof projects[number]}) {
         {project.description}
       </p>
 
+      {/* Case study toggle — only renders if caseStudy exists */}
+      {project.caseStudy && (
+        <div>
+          <button
+            onClick={() => setExpanded(prev => !prev)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+              background: 'none',
+              border: 'none',
+              padding: 0,
+              color: COLORS.accent,
+              ...FONTS.presets.tag,
+              cursor: 'pointer',
+            }}
+            aria-expanded={expanded}
+          >
+            {expanded ? 'Hide case study' : 'Read the full case study'}
+            <ChevronDown
+              size={14}
+              style={{
+                transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)',
+                transition: 'transform 150ms ease-out',
+              }}
+            />
+          </button>
+
+          {expanded && (
+            <div
+              style={{
+                marginTop: 12,
+                paddingTop: 12,
+                borderTop: `1px solid ${COLORS.border}`,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 10,
+              }}
+            >
+              {project.caseStudy.split('\n\n').map((paragraph, i) => (
+                <p
+                  key={i}
+                  style={{
+                    ...FONTS.presets.body,
+                    color: COLORS.textSecondary,
+                    margin: 0,
+                  }}
+                  dangerouslySetInnerHTML={{
+                    __html: paragraph.replace(/\*\*(.*?)\*\*/g, `<strong style="color:${COLORS.textPrimary}">$1</strong>`),
+                  }}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
       {/* Tech tags */}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
         {project.tech.map(tag => (
@@ -86,6 +144,7 @@ function ProjectCard({ project }: { project: typeof projects[number]}) {
 function IconLink({ href, label, children }: { href: string; label: string; children: React.ReactNode }) {
   return (
     <a
+    
       href={href}
       target="_blank"
       rel="noopener noreferrer"

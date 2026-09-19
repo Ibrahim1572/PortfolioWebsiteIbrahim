@@ -77,6 +77,16 @@ export function Contact() {
           View Résumé
         </ContactButton>
       </div>
+      <p
+        style={{
+          ...FONTS.presets.body,
+          color: COLORS.textSecondary,
+          marginTop: 16,
+          fontSize: 14,
+        }}
+      >
+        Based in Pakistan (GMT+5) · Open to remote and freelance work
+      </p>
     </section>
   );
 }
